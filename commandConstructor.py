@@ -1,7 +1,5 @@
-# 用于获取IR遥控器的指令并组成控制指令JSON文件
+# 用于获取IR遥控器的指令并组成控制指令字典文件，用于后续程序的读取
 import broadlink
-import json
-
 # 发现博联设备
 devices = broadlink.discover(timeout=5)
 print(devices)
@@ -38,4 +36,8 @@ while(True):
         pass
     a = a+1
 
-print('学习结束，保存文件....')
+print('学习结束，请输入保存文件名')
+fileName = input()
+f = open(fileName, 'w')
+f.write(str(commands))
+f.close()
